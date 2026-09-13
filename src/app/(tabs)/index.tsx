@@ -1,10 +1,13 @@
 import useTheme from "@/hooks/useTheme";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-
+import { Text, TouchableOpacity, View } from "react-native";
+import { createHomeStyles } from "../../../assets/styles/home.styles";
 export default function Index() {
-  const { toggleDarkMode } = useTheme();
+  const { toggleDarkMode, colors } = useTheme();
+
+  const homeStyles = createHomeStyles(colors);
+
   return (
-    <View style={styles.container}>
+    <View style={homeStyles.container}>
       <Text>My App</Text>
       <TouchableOpacity onPress={toggleDarkMode}>
         <Text>Toggle the mode</Text>
@@ -12,11 +15,3 @@ export default function Index() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
